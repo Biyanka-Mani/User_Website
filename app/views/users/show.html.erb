@@ -1,0 +1,36 @@
+
+<div class="container">
+  <h1 class="text-left mt-4">Welcome to Users Dashboard !</h1>
+  <h3>Hi,<%=@user.firstname%></h3>
+  <div class="row ">
+    <div class="col-sm-6">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h5 class="card-title">Feature 1!</h5>
+          <p class="card-text">Users:The user can create new users from the dashboard!.</p>
+            <%=link_to 'Create Users',new_user_path,class:"btn btn-outline-success"%>
+          </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card mt-5">
+            <div class="card-body">
+              <h5 class="card-title">Feature 2!</h5>
+              <p class="card-text">Display details of all the registered users in a table with view, edit and delete options</p>
+              <%=link_to 'See All Users', users_path,class:"btn btn-outline-primary"%>
+            </div>
+          </div>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h5 class="card-title">Feature 3!</h5>
+          <p class="card-text">Display all contact us queries in a table!</p>
+            <%=link_to 'See enquiries',enquiries_index_path,class:"btn btn-outline-success"%>
+          </div>
+          </div>
+        </div>
+  </div>
+</div>

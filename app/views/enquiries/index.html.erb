@@ -1,0 +1,57 @@
+
+<div class="container">
+    <h1 class="text-center">See all Registered Messages Here !</h1>
+    
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email </th>
+                <th scope="col">Subject</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @enquiries.each do |enquiry| %>
+                <tr>
+                    <td><%=enquiry.name %></td>
+                    <td><%= enquiry.email %></td>
+                    <td><%= enquiry.subject %></td>
+                    <td>
+                        <span class="me-3">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_<%= enquiry.id %>">See Message
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                <% end %>   
+            </tbody>
+        </table>
+        <% @enquiries.each do |enquiry| %>
+        <div class="modal fade" id="modal_<%= enquiry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><%= enquiry.subject %></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <%= enquiry.meassage %>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+    
+</div>
+
+
+
+
+
+
