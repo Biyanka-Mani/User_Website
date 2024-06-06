@@ -1,33 +1,105 @@
-<div class="container-flouid">
-  <nav class="navbar navbar-expand-lg bg-dark">
-    <div class="container">
-      <a class="navbar-brand text-white text-decoration-underline " href="/">
-        <h3>NebulaHaven</h3>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-             <%=link_to 'Home',root_path,class:"nav-link active text-white"%>
-          </li>
-          <li class="nav-item">
-            <%=link_to 'About Us', about_us_path,class:"nav-link active text-white"%>
-          </li>
-          <li class="nav-item">
-             <%=link_to 'Connect Us',new_enquiry_path,class:"nav-link active text-white"%>
-          </li>
-          <li class="nav-item">
-             <%=link_to 'Admin Section',new_enquiry_path,class:"nav-link active text-white"%>
-          </li>
-        </ul>
-        <form class="">
-          <%=link_to 'Login',login_path,class:"btn btn-outline-primary mr-2"%>
-          <%=link_to 'Become member',new_user_path,class:"btn btn-outline-success"%>
-        </form>
+<section>
+	<nav class="navbar navbar-expand-lg p-3" style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;">
+		<%= image_tag 'venturia-high-resolution-logo-transparent.png', class: 'img-fluid', alt: 'Free Frontend Logo', width:250 %>
+		<ul class="navbar-nav ms-auto ">
+		<% if !logged_in?%>
+          <li class="nav-item d-flex align-items-center  m-3">
+				<%= link_to root_path,class: "nav-link" do %>
+					<svg class="bi bi-house-door me-1" fill="currentColor" height="24"   viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg" >
+					<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"></path></svg> 
+					Home
+				<% end %>
+			</li>
+		<%else%>
+		<li class="nav-item d-flex align-items-center  m-3">
+				<%= link_to dashboard_path,class: "nav-link" do %>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-unity me-1" viewBox="0 0 16 16">
+					<path d="M15 11.2V3.733L8.61 0v2.867l2.503 1.466c.099.067.099.2 0 .234L8.148 6.3c-.099.067-.197.033-.263 0L4.92 4.567c-.099-.034-.099-.2 0-.234l2.504-1.466V0L1 3.733V11.2v-.033.033l2.438-1.433V6.833c0-.1.131-.166.197-.133L6.6 8.433c.099.067.132.134.132.234v3.466c0 .1-.132.167-.198.134L4.031 10.8l-2.438 1.433L7.983 16l6.391-3.733-2.438-1.434L9.434 12.3c-.099.067-.198 0-.198-.133V8.7c0-.1.066-.2.132-.233l2.965-1.734c.099-.066.197 0 .197.134V9.8z"/>
+					</svg>Dashboard
+				<% end %>
+			</li>
+		<%end%>
 
-      </div>
-    </div>
-  </nav>
-</div>     
+		<% if !logged_in?%>
+			<li class="nav-item  m-3">
+				<%= link_to about_us_path, class: "nav-link" do %>
+					<svg class="bi bi-info-circle me-1" fill="currentColor" height="24" viewbox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+					<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path></svg>
+					About
+				<% end %>
+			</li>
+			<%# <li class="nav-item d-flex align-items-center m-3">
+						<a class="nav-link" href=""><svg class="bi bi-shop me-1" fill="currentColor" height="24" viewbox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"></path></svg> Shop</a>
+			</li>
+			<li class="nav-item d-flex align-items-center m-3">
+				<a class="nav-link" href=""><svg class="bi bi-newspaper me-1" fill="currentColor" height="24" viewbox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"></path>
+				<path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"></path></svg> Blog</a>
+			</li> %>
+
+		<%else%>
+			
+			<li class="nav-item dropdown  d-flex align-items-center m-3">
+				
+				<a class="nav-link dropdown-toggle" type="button" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle me-1" viewBox="0 0 16 16">
+					<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+					<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+					</svg><%= current_user.firstname%>
+				 </a>
+				 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<li><h6 class="dropdown-header">Account Settings</h6></li>
+					<li><%= link_to user_path(current_user), class: "dropdown-item" do %>View Profile<% end %></li>
+					<li><%= link_to edit_user_path(current_user), class: "dropdown-item" do %>Edit Profile<% end %></li>
+					<li><%= link_to user_path(current_user), class: "dropdown-item text-danger",data: { 
+                                turbo_method: :delete,
+                                turbo_confirm: "Are you sure to Delete Your Account?"
+                            } do %>Delete Account<% end %></li>
+				</ul>
+				
+			</li>
+			
+		<%end%>
+			<li class="nav-item d-flex align-items-center m-3">
+				<%= link_to contact_path, class: "nav-link" do %>
+					<svg class="bi bi-person-lines-fill me-1" fill="currentColor" height="24" viewbox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"></path>
+					</svg> Contact
+			   <%end%>
+			</li>
+			<% if !logged_in?%>
+				<li class="nav-item d-flex align-items-center m-3">
+					<%= link_to login_path, class: "nav-link" do %>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-in-right me-1" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+						<path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+						</svg> Login
+					<% end %>
+				</li>
+				<li class="nav-item d-flex align-items-center m-3">
+					<%= link_to signup_path, class: "nav-link" do %>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-in-up me-1" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z"/>
+						<path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z"/>
+						</svg> SignUp
+					<% end %>
+				</li>
+				<%else%>
+				 <li class="nav-item d-flex align-items-center m-3">
+					 <%= link_to logout_path, class:"nav-link" ,data: { 
+                                turbo_method: :delete,
+                                turbo_confirm: "Are you sure?"
+                            } do %>	
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right me-1" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+						<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+						</svg>Logout
+					<% end %>
+				 </li>
+			<%end%>
+		</ul>
+        
+	</nav>
+</section>  

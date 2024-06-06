@@ -1,0 +1,32 @@
+<h1 class="text-center"></h1>
+<div class="inner mt-5 mb-5 "> 
+    <div class="image-holder">
+        <img src="https://colorlib.com/etc/regform/colorlib-regform-17/images/registration-form-1.jpg"/>
+    </div>
+    <div class="form-action py-3 mx-3">
+        <h3>Login Form</h3>
+        <%= form_with scope: :session, url: login_path,class:"row gy-2 mt-2",local: true do |f| %>
+                <div class="form-group col-md-12">
+                    <%= f.label :email ,class:"form-label text-white"%>
+                    <%= f.email_field :email,class:"form-control shadow p-3 bg-body-tertiary rounded",placeholder:"Enter Your Email" %>
+                    
+                </div>
+                    
+                <div class="col-12">
+                    <%= f.label :password ,class:"form-label text-white"%>
+                    <%=f.password_field :password,class:"form-control shadow p-3 bg-body-tertiary rounded",placeholder:"Enter Password" %>
+                        
+                </div>
+                <div class="form-group  text-center mt-4">
+                    <%= f.submit "Login", class:"btn btn-outline-success btn-lg  text-white mb-3 ",style:"box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;" %>
+                </div> 
+        <%end%>
+        <div class="signup-section mt-3 p-4">
+            <p>Create An Account <%= link_to"Click to Create Account",new_user_path,class:"m-2" %><p>
+        </div>
+        <%# <div class="signup-with-socialmedia">
+            <button class="social-signin google" style="background: #DD4B39;">Log in with Google+</button>
+        </div> %>
+
+    </div>
+</div>

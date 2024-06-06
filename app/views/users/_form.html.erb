@@ -1,50 +1,87 @@
+<section class="vh-250 p-3">
+      <div class="row justify-content-center d-flex h-100">
+        <div class="col-11 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <%= form_with model: @user,local: true do |f| %>
 
-<div class="container mt-5 "> 
-    <div class="mx-auto">
-        <div class="row justify-content-center mt-3 ">
-            <div class="col-10">
-                <%= render 'shared/errors'%>
-                <%= form_with model: @user,class:"container shadow row g-3 bg-black rounded mt-2",local: true do |f| %>
-                    <div class="col-md-6">
-                        <%= f.label :firstname ,class:"form-label text-white"%>
-                        <%= f.text_field :firstname,class:"form-control shadow p-3 bg-body-tertiary rounded",placeholder:"Enter Firstname" %>
+                <div class="form-outline mb-4">
+                    <%= f.label :firstname ,class:"form-label"%>
+                        <%= f.text_field :firstname,class:"form-control form-control-lg" %>
                         <% @user.errors.full_messages_for(:firstname).each do |message| %>
                             <div><%= message %></div> 
-                        <% end %> 
-                    </div>
-                    
-                    <div class="col-md-6">
-                        <%= f.label :lastname ,class:"form-label text-white"%>
-                        <%= f.text_field :lastname,class:"form-control shadow p-3 bg-body-tertiary rounded",placeholder:"Enter Lastname" %>
+                    <% end %> 
+                </div>
+
+                <div class="form-outline mb-4">
+                   <%= f.label :lastname ,class:"form-label"%>
+                        <%= f.text_field :lastname,class:"form-control form-control-lg" %>
                         <% @user.errors.full_messages_for(:lastname).each do |message| %>
                             <div><%= message %></div> 
-                        <% end %> 
-                    </div>
-                    <div class="col-12">
-                        <%= f.label :email ,class:"form-label text-white"%>
-                        <%= f.email_field :email,class:"form-control shadow p-3 bg-body-tertiary rounded",placeholder:"Enter Your Email" %>
+                    <% end %> 
+                </div>
+
+                <div class="form-outline mb-4">
+                   <%= f.label :email ,class:"form-label"%>
+                        <%= f.email_field :email,class:"form-control form-control-lg" %>
                         <% @user.errors.full_messages_for(:email).each do |message| %>
                             <div><%= message %></div> 
-                        <% end %> 
-                    </div>
-                    
-                    <div class="col-12">
-                        <%= f.label :password ,class:"form-label text-white"%>
-                        <%= f.password_field :password,class:"form-control shadow p-3 bg-body-tertiary rounded",placeholder:"Enter Password" %>
+                    <% end %> 
+                </div>
+
+                <div class="form-outline mb-4">
+                    <%= f.label :password ,class:"form-label "%>
+                        <%= f.password_field :password,class:"form-control form-control-lg",placeholder:"Enter Your Password" %>
                         <% @user.errors.full_messages_for(:password).each do |message| %>
                             <div><%= message %></div> 
-                        <% end %>
-                    </div>
-                    <div class="form-group  text-center mt-3">
-                        <%= f.submit class:"btn btn-outline-success btn-lg my-6 text-white mb-3 " %>
-                    </div> 
-                    
-                <% end %>
+                    <% end %>
+                </div>
+
+              <%if !logged_in?%>
+                <div class="form-check d-flex  mb-4">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+              <%end%>
+
+                <div class="d-flex justify-content-center mt-5">
+                  <%= f.submit (@user.new_record?  ? "Register": "Update Profile") , class:"btn btn-success btn-block btn-lg gradient-custom-4  text-white " %>
+                </div>
+
+               <%if !logged_in?%>
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? 
+                    <a href="#!" class="fw-bold text-body"><u>Login here</u></a>
+                </p>
+                <%end%>
+
+              <%end%>
+
             </div>
-            <div class="mb-3">
-                
-            </div>
+          </div>
         </div>
         
-    </div>
-</div>
+        <div class="col-5 col-xl-5 ">
+          <div class="row mb-5 h-100">
+            <%=image_tag 'denys-striyeshyn-Rj1eIzAypmg-unsplash.jpg', class: 'img-fluid h-100', alt: 'Image Description',style:"border-radius: 30px;"%>
+          </div>
+        </div>
+      </div>
+</section>
+<style>
+.card {
+  height: 100%;
+}
+
+.row.mb-5.h-100 {
+  height: 100%;
+}
+
+.img-fluid.h-100 {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+  
+</style>

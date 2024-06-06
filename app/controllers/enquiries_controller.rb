@@ -1,5 +1,5 @@
 class EnquiriesController < ApplicationController
-  
+  before_action :require_admin,only: [:index]
   def index
     @enquiries=Enquiry.all
   end
@@ -12,9 +12,8 @@ class EnquiriesController < ApplicationController
 
     if @enquiry.save
         flash[:notice]="Message Send Successfully"
-        redirect_to new_enquiry_path
+        redirect_to root_path
     else
-        flash[:alert]="Message is not Send "
         render new_enquiry_path(@enquiry) , status: :unprocessable_entity
     end
 end
@@ -25,5 +24,11 @@ end
    end
    def enquiry_params
       params.require(:enquiry).permit(:name, :email,:subject,:meassage)
+   end
+   def require_admin
+    if !current_user&.admin?
+      flash[:alert]="Admin Featured Actions!"
+      redirect_to contact_path
+    end
    end
 end

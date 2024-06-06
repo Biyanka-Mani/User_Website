@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
   get 'enquiries/index'
+  get '/contact',to:"enquiries#new"
   
-
+  get "/login",to:'sessions#new'
+  post 'login',to:'sessions#create'
+  delete 'logout',to:'sessions#destroy'
 
   get 'users/index'
   get '/login',to:"users#login"
-  post "/autheticator",to: 'users#autheticator'
+  get '/signup', to:"users#new"
+  get '/dashboard',to: "users#dashboard"
+
 
   root 'pages#home'
   get "/about_us", to:'pages#about_us'
+  
+
 
   resources :users
   resources :enquiries
