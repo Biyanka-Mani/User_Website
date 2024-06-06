@@ -52,7 +52,7 @@
 
                <%if !logged_in?%>
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? 
-                    <a href="#!" class="fw-bold text-body"><u>Login here</u></a>
+                    <%= link_to "Login here",login_path,class:"fw-bold text-body m-2"%>
                 </p>
                 <%end%>
 

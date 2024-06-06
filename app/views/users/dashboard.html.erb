@@ -1,12 +1,18 @@
 <div class="container">
-  <h1 class="text-left mt-4">Welcome to Users Dashboard !</h1>
+  <% if current_user.admin? %>
+    <h1 class="text-left mt-4">Welcome to Admin Dashboard !</h1>
+  <%else%>
+    <h1 class="text-left mt-4">Welcome to User Dashboard !</h1>
+  <%end%>
   <h3>Hi,<%=current_user.firstname%></h3>
-  <div class="row my-3 ">
+  <div class="row my-3">
     <div class="col-sm-6">
       <div class="card mt-5">
         <div class="card-body">
             <h5 class="card-title">Feature 1!</h5>
-            <p class="card-text">Users:The user can create new users from the dashboard!.</p>
+            <p class="card-text">Users:The user can create new users from the dashboard!.Lorem30
+              fbhb jef 
+            </p>
               <%=link_to 'Create Users',new_user_path,class:"btn btn-outline-success"%>
         </div>
       </div>
@@ -23,7 +29,7 @@
   </div>
 
   <% if logged_in? && current_user.admin? %>
-    <div class="row my-5">
+    <div class="row mb-3">
       <div class="col-sm-6">
         <div class="card mt-5">
           <div class="card-body">
@@ -37,3 +43,11 @@
     <%end%>
 
 </div>
+<style>
+  @media (min-width: 576px) {
+    .col-sm-6 {
+        
+         width: 100%; 
+    }
+}
+</style>
